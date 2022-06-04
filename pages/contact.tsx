@@ -11,7 +11,7 @@ const Contact: NextPage = () => {
 			>
 				Contact Me
 			</h1>
-			<div className="flex col gap-4 border rounded-md p-2 mt-8 lg:p-4">
+			<div className="flex col gap-4  p-2 mt-8 lg:p-4">
 				<a
 					href="http://github.com/dev-mohammadrezaahmadi"
 					target="_blank"
