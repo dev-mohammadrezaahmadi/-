@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 import '../styles/globals.css';
 
 export const metadata: Metadata = {
-  title: 'Your Name - Portfolio',
+  title: 'Mohammad Reza Ahmadi - Portfolio',
   description: 'Personal portfolio website showcasing my work and experience',
 };
 

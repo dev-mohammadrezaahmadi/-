@@ -58,7 +58,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link href="/" className="text-xl font-bold text-white hover:text-green-dark transition-colors relative z-10">
-              Your Name
+              Mohammad Reza Ahmadi
             </Link>
           </div>
 

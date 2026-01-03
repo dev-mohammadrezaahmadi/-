@@ -30,7 +30,7 @@ const Footer = () => {
           })}
         </div>
         <p className="text-sm text-slate-dark dark:text-slate-light text-center">
-          Designed & Built by Your Name
+          Designed & Built by Mohammad Reza Ahmadi
         </p>
         <p className="text-xs text-slate-dark/60 dark:text-slate-light/60 text-center">
           Inspired by{' '}
