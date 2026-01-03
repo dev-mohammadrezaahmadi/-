@@ -144,6 +144,29 @@
   .animate-liquid-glow {
     animation: liquidGlow 4s ease-in-out infinite;
   }
+
+  .timeline-dot-glow {
+    box-shadow: 
+      0 0 20px rgba(82, 212, 184, 0.6),
+      0 0 40px rgba(82, 212, 184, 0.4),
+      0 0 60px rgba(82, 212, 184, 0.2);
+    animation: timelinePulse 2s ease-in-out infinite;
+  }
+
+  @keyframes timelinePulse {
+    0%, 100% {
+      box-shadow: 
+        0 0 20px rgba(82, 212, 184, 0.6),
+        0 0 40px rgba(82, 212, 184, 0.4),
+        0 0 60px rgba(82, 212, 184, 0.2);
+    }
+    50% {
+      box-shadow: 
+        0 0 30px rgba(82, 212, 184, 0.8),
+        0 0 60px rgba(82, 212, 184, 0.5),
+        0 0 90px rgba(82, 212, 184, 0.3);
+    }
+  }
 }
 
 /* Dark mode styles for Tailwind classes */
