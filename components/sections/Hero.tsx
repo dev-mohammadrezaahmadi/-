@@ -9,7 +9,7 @@ const Hero = () => {
           Mohammad Reza Ahmadi
         </h1>
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-dark dark:text-slate-light mb-6">
-        Blending Design and Technology to Create User Delight.
+        Blend Design and Technology to Create User Delight.
         </h2>
         <p className="text-lg sm:text-xl text-slate-dark dark:text-slate-light max-w-2xl mx-auto mb-8">
           I'm a software engineer and providing solutions mainly in JavaScript Ecosystem.
