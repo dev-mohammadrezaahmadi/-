@@ -48,7 +48,7 @@ const Navbar = () => {
     }
   };
 
-  return (
+	return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       scrolled ? 'liquid-glass-nav-scrolled' : 'liquid-glass-nav'
     }`}>
@@ -57,23 +57,22 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link href="/" className="text-xl font-bold text-white hover:text-green-dark transition-colors relative z-10">
               Mohammad Reza Ahmadi
-            </Link>
-          </div>
-
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
-                className="text-sm text-slate-light hover:text-green-dark transition-colors relative z-10 px-3 py-1.5 rounded-xl hover:bg-white/5"
-              >
-                {item.name}
-              </a>
-            ))}
+				</Link>
           </div>
 
           <div className="flex items-center space-x-4">
+            <div className="hidden md:flex items-center space-x-6">
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className="text-sm text-slate-light hover:text-green-dark transition-colors relative z-10 px-3 py-1.5 rounded-xl hover:bg-white/5"
+                >
+                  {item.name}
+                </a>
+              ))}
+            </div>
             <div className="hidden sm:flex items-center space-x-3">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
@@ -94,8 +93,8 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </nav>
-  );
+		</nav>
+	);
 };
 
 export default Navbar;
