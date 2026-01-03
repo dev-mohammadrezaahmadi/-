@@ -81,19 +81,24 @@ const Projects = () => {
         Some Things I've Built
       </h2>
       <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            ref={(el) => {
-              projectRefs.current[index] = el;
-            }}
-            className={`group relative liquid-glass-card rounded-xl overflow-hidden transition-all duration-700 hover:scale-[1.02] ${
-              visibleProjects.has(index)
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-8'
-            }`}
-            style={{ transitionDelay: `${index * 0.1}s` }}
-          >
+        {projects.map((project, index) => {
+          const cardUrl = project.live || project.github || '#';
+          return (
+            <a
+              key={index}
+              ref={(el) => {
+                projectRefs.current[index] = el;
+              }}
+              href={cardUrl}
+              target={cardUrl !== '#' ? '_blank' : undefined}
+              rel={cardUrl !== '#' ? 'noopener noreferrer' : undefined}
+              className={`group relative liquid-glass-card rounded-xl overflow-hidden transition-all duration-700 hover:scale-[1.02] block cursor-pointer ${
+                visibleProjects.has(index)
+                  ? 'opacity-100 translate-y-0'
+                  : 'opacity-0 translate-y-8'
+              }`}
+              style={{ transitionDelay: `${index * 0.1}s` }}
+            >
             {project.image && (
               <div className="relative w-full h-48 overflow-hidden">
                 <Image
@@ -133,7 +138,8 @@ const Projects = () => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-slate-dark dark:text-slate-light hover:text-green dark:hover:text-green-dark transition-colors"
+                    onClick={(e) => e.stopPropagation()}
+                    className="text-slate-dark dark:text-slate-light hover:text-green dark:hover:text-green-dark transition-colors relative z-10"
                     aria-label="GitHub"
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -146,7 +152,8 @@ const Projects = () => {
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-slate-dark dark:text-slate-light hover:text-green dark:hover:text-green-dark transition-colors"
+                    onClick={(e) => e.stopPropagation()}
+                    className="text-slate-dark dark:text-slate-light hover:text-green dark:hover:text-green-dark transition-colors relative z-10"
                     aria-label="Live Site"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -156,8 +163,9 @@ const Projects = () => {
                 )}
               </div>
             </div>
-          </div>
-        ))}
+          </a>
+          );
+        })}
       </div>
     </section>
   );
