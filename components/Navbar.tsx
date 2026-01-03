@@ -33,11 +33,9 @@ const Navbar = () => {
   ];
 
   const socialLinks = [
-    { name: 'GitHub', icon: FaGithub, href: 'https://github.com' },
-    { name: 'LinkedIn', icon: FaLinkedin, href: 'https://linkedin.com' },
-    { name: 'Twitter', icon: FaTwitter, href: 'https://twitter.com' },
-    { name: 'CodePen', icon: FaCodepen, href: 'https://codepen.io' },
-    { name: 'Instagram', icon: FaInstagram, href: 'https://instagram.com' },
+    { name: 'GitHub', icon: FaGithub, href: 'https://github.com/dev-mohammadrezaahmadi' },
+    { name: 'LinkedIn', icon: FaLinkedin, href: 'https://www.linkedin.com/in/mohammad-reza-ahmadi-7b5b01258' },
+
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {

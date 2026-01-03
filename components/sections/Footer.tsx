@@ -2,11 +2,8 @@ import { FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaCodepen } from 'react-i
 
 const Footer = () => {
   const socialLinks = [
-    { name: 'GitHub', icon: FaGithub, href: 'https://github.com' },
-    { name: 'LinkedIn', icon: FaLinkedin, href: 'https://linkedin.com' },
-    { name: 'Twitter', icon: FaTwitter, href: 'https://twitter.com' },
-    { name: 'CodePen', icon: FaCodepen, href: 'https://codepen.io' },
-    { name: 'Instagram', icon: FaInstagram, href: 'https://instagram.com' },
+    { name: 'GitHub', icon: FaGithub, href: 'https://github.com/dev-mohammadrezaahmadi' },
+    { name: 'LinkedIn', icon: FaLinkedin, href: 'https://www.linkedin.com/in/mohammad-reza-ahmadi-7b5b01258' },
   ];
 
   return (
@@ -31,17 +28,6 @@ const Footer = () => {
         </div>
         <p className="text-sm text-slate-dark dark:text-slate-light text-center">
           Designed & Built by Mohammad Reza Ahmadi
-        </p>
-        <p className="text-xs text-slate-dark/60 dark:text-slate-light/60 text-center">
-          Inspired by{' '}
-          <a
-            href="https://brittanychiang.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link"
-          >
-            brittanychiang.com
-          </a>
         </p>
       </div>
     </footer>
