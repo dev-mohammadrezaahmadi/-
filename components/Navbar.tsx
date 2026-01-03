@@ -35,11 +35,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-navy/80 backdrop-blur-sm border-b border-slate-light/10">
+    <nav className="fixed top-0 left-0 right-0 z-50 liquid-glass-nav">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <Link href="/" className="text-xl font-bold text-white hover:text-green-dark transition-colors">
+            <Link href="/" className="text-xl font-bold text-white hover:text-green-dark transition-colors relative z-10">
               Your Name
             </Link>
           </div>
@@ -50,7 +50,7 @@ const Navbar = () => {
                 key={item.name}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className="text-sm text-slate-light hover:text-green-dark transition-colors"
+                className="text-sm text-slate-light hover:text-green-dark transition-colors relative z-10 px-3 py-1.5 rounded-xl hover:bg-white/5"
               >
                 {item.name}
               </a>
@@ -58,7 +58,7 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center space-x-4">
-            <div className="hidden sm:flex items-center space-x-4">
+            <div className="hidden sm:flex items-center space-x-3">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
                 return (
@@ -67,7 +67,7 @@ const Navbar = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-slate-light hover:text-green-dark transition-colors"
+                    className="text-slate-light hover:text-green-dark transition-all relative z-10 w-10 h-10 flex items-center justify-center rounded-xl hover:bg-white/5"
                     aria-label={social.name}
                   >
                     <Icon className="w-5 h-5" />

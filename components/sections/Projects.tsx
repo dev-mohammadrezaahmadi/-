@@ -55,14 +55,14 @@ const Projects = () => {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="group relative bg-white dark:bg-navy-light rounded-lg p-6 border border-slate-dark/10 dark:border-slate-light/10 hover:border-green dark:hover:border-green-dark transition-all duration-300"
+            className="group relative liquid-glass-card rounded-xl p-6"
           >
             <div className="flex justify-between items-start mb-4">
               <div>
-                <h3 className="text-xl font-semibold text-navy-dark dark:text-white mb-2">
+                <h3 className="text-xl font-semibold text-white mb-2">
                   {project.title}
                 </h3>
-                <p className="text-slate-dark dark:text-slate-light text-sm mb-4">
+                <p className="text-slate-light text-sm mb-4">
                   {project.description}
                 </p>
               </div>

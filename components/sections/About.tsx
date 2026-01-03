@@ -20,7 +20,7 @@ const About = () => {
               performant experiences.
             </p>
             <p>Here are a few technologies I've been working with recently:</p>
-            <ul className="grid grid-cols-2 gap-2 list-disc list-inside text-sm">
+            <ul className="grid grid-cols-2 gap-2 list-disc list-inside text-sm mt-4">
               <li>JavaScript (ES6+)</li>
               <li>TypeScript</li>
               <li>React</li>
@@ -31,9 +31,9 @@ const About = () => {
           </div>
         </div>
         <div className="hidden md:block flex-shrink-0">
-          <div className="w-64 h-64 rounded-lg border-2 border-green dark:border-green-dark relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-green/20 to-transparent"></div>
-            <div className="absolute inset-4 bg-navy-light dark:bg-slate-dark rounded"></div>
+          <div className="w-64 h-64 rounded-2xl liquid-glass-card relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-green-dark/15 via-green-dark/8 to-transparent"></div>
+            <div className="absolute inset-4 liquid-glass-soft rounded-xl"></div>
           </div>
         </div>
       </div>
