@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Navbar from '../components/Navbar';
-import { ThemeProvider } from '../contexts/ThemeContext';
 import '../styles/globals.css';
 
 export const metadata: Metadata = {
@@ -14,14 +13,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark">
       <body className="min-h-screen">
-        <ThemeProvider>
-          <Navbar />
-          <main>{children}</main>
-        </ThemeProvider>
+        <Navbar />
+        <main>{children}</main>
       </body>
     </html>
   );
 }
-
