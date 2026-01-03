@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const About = () => {
   return (
     <section id="about" className="section-container">
@@ -27,13 +29,32 @@ const About = () => {
               <li>Next.js</li>
               <li>Node.js</li>
               <li>Tailwind CSS</li>
+              <li>Nuxt.js</li>
+              <li>Vue.js</li>
+              <li>Nestjs</li>
+              <li>GraphQL</li>
+              <li>Docker</li>
+              <li>PWA</li>
             </ul>
           </div>
         </div>
         <div className="hidden md:block flex-shrink-0">
-          <div className="w-64 h-64 rounded-2xl liquid-glass-card relative overflow-hidden">
+          <div className="w-64 h-64 rounded-2xl liquid-glass-card relative overflow-hidden animate-float">
             <div className="absolute inset-0 bg-gradient-to-br from-green-dark/15 via-green-dark/8 to-transparent"></div>
-            <div className="absolute inset-4 liquid-glass-soft rounded-xl"></div>
+            <div className="absolute inset-4 liquid-glass-soft rounded-xl overflow-hidden">
+              <Image
+                src="/my-photo.jpg"
+                alt="Mohammad Reza Ahmadi"
+                width={256}
+                height={256}
+                className="w-full h-full object-cover animate-fade-in hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                quality={90}
+                style={{ animationDelay: '0.3s' }}
+              />
+            </div>
           </div>
         </div>
       </div>
