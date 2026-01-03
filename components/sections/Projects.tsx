@@ -10,39 +10,28 @@ interface Project {
 const Projects = () => {
   const projects: Project[] = [
     {
-      title: 'Project One',
+      title: 'Movie DB Finder',
       description:
-        'A modern web application built with React and Next.js. Features include real-time updates, responsive design, and seamless user experience.',
-      technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],
-      github: 'https://github.com',
-      live: 'https://example.com',
+        'A movie database finder built with Nuxt.js and TypeScript. Features include real-time updates, responsive design, and seamless user experience.',
+      technologies: ['Nuxt.js', 'TypeScript', 'Tailwind CSS'],
+      live: 'https://moviez-dev-mohammadrezaahmadi.vercel.app',
       featured: true,
     },
     {
-      title: 'Project Two',
+      title: 'Clothes Shop',
       description:
-        'An e-commerce platform with advanced filtering, search functionality, and payment integration. Built with modern web technologies.',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-      github: 'https://github.com',
-      live: 'https://example.com',
+        'An e-commerce shopping platform with advanced filtering, search functionality, and payment integration. Built with modern web technologies.',
+      technologies: ['React', 'Redux', 'TypeScript', 'Tailwind CSS', 'Jest', 'Styled-Components'],
+      live: 'https://clothes-shop-dev-mohammadrezaahmadi.vercel.app/',
       featured: true,
     },
     {
-      title: 'Project Three',
+      title: 'Blog App',
       description:
-        'A dashboard application for data visualization and analytics. Includes interactive charts, real-time data updates, and export functionality.',
-      technologies: ['React', 'D3.js', 'TypeScript', 'Express'],
-      github: 'https://github.com',
-      live: 'https://example.com',
-    },
-    {
-      title: 'Project Four',
-      description:
-        'A mobile-first web application with offline capabilities. Built with progressive web app technologies for optimal performance.',
-      technologies: ['React', 'PWA', 'Service Workers', 'IndexedDB'],
-      github: 'https://github.com',
-      live: 'https://example.com',
-    },
+        'Read, Write and Share new contents with world!',
+      technologies: ['Next.js', 'React', 'GraphQL', 'TypeScript', 'Tailwind CSS'],
+      live: 'https://blog-app-dev-mohammadrezaahmadi.vercel.app/',
+    }
   ];
 
   return (
