@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Custom Colors - Define as CSS variables that map to Tailwind utilities */
+  --color-navy-light: #112240;
+  --color-navy: #0a192f;
+  --color-navy-dark: #020c1b;
+  
+  --color-slate-light: #ccd6f6;
+  --color-slate: #8892b0;
+  --color-slate-dark: #495670;
+  
+  --color-green: #64ffda;
+  --color-green-dark: #52d4b8;
+
+  /* Font Family */
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to { 
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white dark:bg-navy-dark text-slate-dark dark:text-slate-light;
+    font-family: var(--font-sans);
+  }
+
+  * {
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20;
+  }
+
+  .section-title {
+    @apply text-3xl sm:text-4xl font-bold text-navy-dark dark:text-white mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-lg sm:text-xl text-slate-dark dark:text-slate-light mb-8;
+  }
+
+  .link {
+    @apply text-green dark:text-green-dark hover:text-green-dark dark:hover:text-green transition-colors duration-200;
+  }
+
+  .btn {
+    @apply px-6 py-3 rounded border border-green dark:border-green-dark text-green dark:text-green-dark hover:bg-green/10 dark:hover:bg-green-dark/10 transition-all duration-200;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+}

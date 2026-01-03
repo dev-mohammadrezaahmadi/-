@@ -1,22 +1,21 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export default function useDarkSide() {
-	const [theme, setTheme] = useState<string>("dark");
-	const colorTheme = theme === "dark" ? "light" : "dark";
+  const [theme, setTheme] = useState<string>('dark');
 
-	useEffect(() => {
-		const root = window.document.documentElement;
-		root.classList.remove(colorTheme);
-		root.classList.add(theme);
-		localStorage.setItem("theme", theme);
-	}, [theme, colorTheme]);
+  useEffect(() => {
+    const root = window.document.documentElement;
+    root.classList.remove('light', 'dark');
+    root.classList.add(theme);
+    
+    // Save to localStorage
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
-	useEffect(() => {
-		const savedTheme = localStorage.getItem("theme") || "dark";
-		setTheme(savedTheme);
-	}, []);
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    setTheme(savedTheme);
+  }, []);
 
-	return [colorTheme, setTheme] as const;
+  return [theme, setTheme] as const;
 }

@@ -1,34 +1,148 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Personal Portfolio Website
+
+A modern, responsive portfolio website inspired by [brittanychiang.com](https://brittanychiang.com/). Built with Next.js, TypeScript, and Tailwind CSS.
+
+## Features
+
+- ✨ Modern, clean design
+- 🌓 Dark mode toggle
+- 📱 Fully responsive
+- ⚡ Fast and optimized
+- 🎨 Smooth animations and transitions
+- ♿ Accessible components
+
+## Sections
+
+- **Hero**: Introduction and call-to-action
+- **About**: Personal information and skills
+- **Experience**: Work history with interactive tabs
+- **Projects**: Showcase of your work
+- **Footer**: Social links and credits
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+ 
+- Yarn (or npm)
+
+### Installation
+
+1. Install dependencies:
 
 ```bash
-npm run dev
+yarn install
 # or
-yarn dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Run the development server:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+yarn dev
+# or
+npm run dev
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+3. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+> **Note**: This project uses the **App Router** (Next.js 13+), which is the recommended approach for new Next.js applications. The App Router provides Server Components by default, improved data fetching, and better performance.
 
-## Learn More
+## Customization
 
-To learn more about Next.js, take a look at the following resources:
+### Update Your Information
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Name and Title**: 
+   - Update in `app/layout.tsx` (metadata title)
+   - Update in `components/Navbar.tsx` (line 54)
+   - Update in `components/sections/Hero.tsx` (lines 6, 9, 12)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+2. **About Section**: 
+   - Edit `components/sections/About.tsx` to update your bio and skills
 
-## Deploy on Vercel
+3. **Experience**: 
+   - Modify the `experiences` array in `components/sections/Experience.tsx`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. **Projects**: 
+   - Update the `projects` array in `components/sections/Projects.tsx`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+5. **Social Links**: 
+   - Update links in `components/Navbar.tsx` (socialLinks array)
+   - Update links in `components/sections/Footer.tsx` (socialLinks array)
+
+### Styling
+
+- Colors are defined in `tailwind.config.js`
+- Global styles are in `styles/globals.css`
+- Customize the color scheme by modifying the Tailwind config
+
+### Fonts
+
+The site uses Inter font from Google Fonts. To change:
+1. Update the import in `styles/globals.css`
+2. Update the font-family in `tailwind.config.js`
+
+## Tech Stack
+
+- **Framework**: Next.js 16
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS 4
+- **Icons**: React Icons
+- **Dark Mode**: Custom implementation with localStorage
+
+## Project Structure
+
+```
+├── app/
+│   ├── layout.tsx          # Root layout (App Router)
+│   └── page.tsx            # Home page
+├── components/
+│   ├── Navbar.tsx          # Navigation bar (Client Component)
+│   ├── Switcher.tsx        # Dark mode toggle (Client Component)
+│   └── sections/
+│       ├── Hero.tsx        # Hero section (Server Component)
+│       ├── About.tsx       # About section (Server Component)
+│       ├── Experience.tsx  # Experience section (Client Component)
+│       ├── Projects.tsx    # Projects section (Server Component)
+│       └── Footer.tsx       # Footer section (Server Component)
+├── hooks/
+│   └── useDarkSide.tsx     # Dark mode hook
+├── styles/
+│   └── globals.css         # Global styles
+└── public/                 # Static assets
+```
+
+### App Router vs Pages Router
+
+This project uses the **App Router** (introduced in Next.js 13):
+- `app/layout.tsx` replaces `pages/_app.tsx`
+- `app/page.tsx` replaces `pages/index.tsx`
+- Server Components by default (better performance)
+- Client Components marked with `'use client'` directive
+- Built-in metadata API for SEO
+
+## Deployment
+
+### Deploy to Vercel
+
+The easiest way to deploy is using [Vercel](https://vercel.com):
+
+1. Push your code to GitHub
+2. Import your repository on Vercel
+3. Deploy!
+
+### Other Platforms
+
+This Next.js app can be deployed to any platform that supports Node.js:
+- Netlify
+- AWS Amplify
+- Railway
+- Render
+
+## License
+
+This project is open source and available under the MIT License.
+
+## Credits
+
+Design inspired by [Brittany Chiang's portfolio](https://brittanychiang.com/).
