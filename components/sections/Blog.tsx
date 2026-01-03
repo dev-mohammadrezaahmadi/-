@@ -1,53 +1,8 @@
 import Link from 'next/link';
-
-interface Article {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  readTime: string;
-  category: string;
-}
+import { getAllPosts } from '../../lib/blog';
 
 const Blog = () => {
-  const articles: Article[] = [
-    {
-      slug: 'getting-started-with-nextjs-14',
-      title: 'Getting Started with Next.js 14',
-      description:
-        'A comprehensive guide to building modern web applications with Next.js 14, covering the App Router, Server Components, and best practices.',
-      date: 'March 2024',
-      readTime: '5 min read',
-      category: 'Web Development',
-    },
-    {
-      slug: 'understanding-react-server-components',
-      title: 'Understanding React Server Components',
-      description:
-        'Deep dive into React Server Components, how they work, and when to use them in your Next.js applications.',
-      date: 'February 2024',
-      readTime: '8 min read',
-      category: 'React',
-    },
-    {
-      slug: 'css-grid-vs-flexbox',
-      title: 'CSS Grid vs Flexbox: When to Use What',
-      description:
-        'A practical guide to choosing between CSS Grid and Flexbox for different layout scenarios in modern web development.',
-      date: 'January 2024',
-      readTime: '6 min read',
-      category: 'CSS',
-    },
-    {
-      slug: 'building-accessible-web-applications',
-      title: 'Building Accessible Web Applications',
-      description:
-        'Best practices and techniques for creating accessible web applications that work for everyone, including WCAG guidelines and implementation tips.',
-      date: 'December 2023',
-      readTime: '10 min read',
-      category: 'Accessibility',
-    },
-  ];
+  const articles = getAllPosts();
 
   return (
     <section id="blog" className="section-container">
@@ -82,25 +37,38 @@ const Blog = () => {
             <p className="text-slate-dark dark:text-slate-light text-sm mb-4">
               {article.description}
             </p>
-            <Link
-              href={`/blog/${article.slug}`}
-              className="text-green dark:text-green-dark text-sm font-mono hover:underline inline-flex items-center gap-2"
-            >
-              Read more
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            <div className="flex items-center justify-between">
+              <Link
+                href={`/blog/${article.slug}`}
+                className="text-green dark:text-green-dark text-sm font-mono hover:underline inline-flex items-center gap-2"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </Link>
+                Read more
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </Link>
+              <span className="text-xs text-slate-dark dark:text-slate-light">
+                by{' '}
+                <a
+                  href={article.authorUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-green dark:text-green-dark hover:underline"
+                >
+                  {article.author}
+                </a>
+              </span>
+            </div>
           </article>
         ))}
       </div>
@@ -109,4 +77,3 @@ const Blog = () => {
 };
 
 export default Blog;
-
