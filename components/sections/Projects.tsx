@@ -1,3 +1,4 @@
+'use client'; 
 interface Project {
   title: string;
   description: string;
@@ -7,7 +8,41 @@ interface Project {
   featured?: boolean;
 }
 
+
+import { useEffect, useRef, useState } from 'react';
+
 const Projects = () => {
+  const [visibleProjects, setVisibleProjects] = useState<Set<number>>(new Set());
+  const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+
+    projectRefs.current.forEach((ref, index) => {
+      if (!ref) return;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setVisibleProjects((prev) => new Set(prev).add(index));
+            }
+          });
+        },
+        {
+          threshold: 0.2,
+          rootMargin: '0px 0px -50px 0px',
+        }
+      );
+
+      observer.observe(ref);
+      observers.push(observer);
+    });
+
+    return () => {
+      observers.forEach((observer) => observer.disconnect());
+    };
+  }, []);
   const projects: Project[] = [
     {
       title: 'Movie DB Finder',
@@ -36,7 +71,7 @@ const Projects = () => {
 
   return (
     <section id="projects" className="section-container">
-      <h2 className="section-title">
+      <h2 className="section-title animate-slide-up">
         <span className="text-green dark:text-green-dark text-xl font-mono mr-2">03.</span>
         Some Things I've Built
       </h2>
@@ -44,11 +79,19 @@ const Projects = () => {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="group relative liquid-glass-card rounded-xl p-6"
+            ref={(el) => {
+              projectRefs.current[index] = el;
+            }}
+            className={`group relative liquid-glass-card rounded-xl p-6 transition-all duration-700 hover:scale-[1.02] ${
+              visibleProjects.has(index)
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-8'
+            }`}
+            style={{ transitionDelay: `${index * 0.1}s` }}
           >
             <div className="flex justify-between items-start mb-4">
               <div>
-                <h3 className="text-xl font-semibold text-white mb-2">
+                <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-green dark:group-hover:text-green-dark transition-colors">
                   {project.title}
                 </h3>
                 <p className="text-slate-light text-sm mb-4">

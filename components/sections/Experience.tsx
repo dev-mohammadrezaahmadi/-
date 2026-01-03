@@ -107,7 +107,7 @@ const Experience = () => {
 
   return (
     <section id="experience" className="section-container">
-      <h2 className="section-title">
+      <h2 className="section-title animate-slide-up">
         <span className="text-green dark:text-green-dark text-xl font-mono mr-2">02.</span>
         Where I've Worked
       </h2>
@@ -124,7 +124,11 @@ const Experience = () => {
                 ref={(el) => {
                   itemRefs.current[index] = el;
                 }}
-                className="relative pl-12 md:pl-20"
+                className={`relative pl-12 md:pl-20 transition-all duration-700 ${
+                  visibleItems.has(index) 
+                    ? 'opacity-100 translate-x-0' 
+                    : 'opacity-0 translate-x-4'
+                }`}
               >
                 {/* Timeline dot */}
                 <div 

@@ -5,11 +5,11 @@ const About = () => {
     <section id="about" className="section-container">
       <div className="flex items-start gap-8 md:gap-12">
         <div className="flex-1">
-          <h2 className="section-title">
+          <h2 className="section-title animate-slide-up">
             <span className="text-green dark:text-green-dark text-xl font-mono mr-2">01.</span>
             About Me
           </h2>
-          <div className="space-y-4 text-slate-dark dark:text-slate-light">
+          <div className="space-y-4 text-slate-dark dark:text-slate-light animate-slide-up" style={{ animationDelay: '0.1s' }}>
             <p>
               Hello! I'm a developer passionate about crafting accessible, pixel-perfect user interfaces
               that blend thoughtful design with robust engineering. My favorite work lies at the intersection
@@ -23,18 +23,11 @@ const About = () => {
             </p>
             <p>Here are a few technologies I've been working with recently:</p>
             <ul className="grid grid-cols-2 gap-2 list-disc list-inside text-sm mt-4">
-              <li>JavaScript (ES6+)</li>
-              <li>TypeScript</li>
-              <li>React</li>
-              <li>Next.js</li>
-              <li>Node.js</li>
-              <li>Tailwind CSS</li>
-              <li>Nuxt.js</li>
-              <li>Vue.js</li>
-              <li>Nestjs</li>
-              <li>GraphQL</li>
-              <li>Docker</li>
-              <li>PWA</li>
+              {['JavaScript (ES6+)', 'TypeScript', 'React', 'Next.js', 'Node.js', 'Tailwind CSS', 'Nuxt.js', 'Vue.js', 'Nestjs', 'GraphQL', 'Docker', 'PWA'].map((tech, index) => (
+                <li key={tech} className="animate-fade-in" style={{ animationDelay: `${0.2 + index * 0.05}s`, opacity: 0 }}>
+                  {tech}
+                </li>
+              ))}
             </ul>
           </div>
         </div>

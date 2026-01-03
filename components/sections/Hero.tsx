@@ -8,15 +8,16 @@ const Hero = () => {
         <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold mb-4 animate-gradient">
           Mohammad Reza Ahmadi
         </h1>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-dark dark:text-slate-light mb-6">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-dark dark:text-slate-light mb-6 animate-slide-up" style={{ animationDelay: '0.2s' }}>
         Blend Design and Technology to Create User Delight.
         </h2>
-        <p className="text-lg sm:text-xl text-slate-dark dark:text-slate-light max-w-2xl mx-auto mb-8">
+        <p className="text-lg sm:text-xl text-slate-dark dark:text-slate-light max-w-2xl mx-auto mb-8 animate-slide-up" style={{ animationDelay: '0.4s' }}>
           I'm a software engineer and providing solutions mainly in JavaScript Ecosystem.
         </p>
         <a
           href="#projects"
-          className="btn inline-block"
+          className="btn inline-block animate-slide-up"
+          style={{ animationDelay: '0.6s' }}
         >
           Explore My Work!
         </a>

@@ -7,7 +7,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="section-container border-t border-slate-dark/10 dark:border-slate-light/10">
+    <footer className="section-container border-t border-slate-dark/10 dark:border-slate-light/10 animate-fade-in">
       <div className="flex flex-col items-center justify-center space-y-4">
         <div className="flex items-center space-x-6">
           {socialLinks.map((social) => {
