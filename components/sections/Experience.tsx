@@ -53,13 +53,10 @@ const Experience = () => {
       location: 'Tehran, Iran',
       period: 'Nov 2023 — Present',
       description: [
-        'Collaborated on a multi-package architecture, decoupling the frontend into version-controlled packages for Core, Helpers, and UI Components. This enabled feature teams to focus on Business Lines (BL), significantly increasing team velocity and ensuring shared logic was rigorously tested in isolation',
-        "Contributed to the team's strategic migration from Nuxt.js 2 to Next.js 14, focusing on porting core infrastructure and payment modules to the new App Router architecture to improve performance and SEO.",
-        "Partnered with cross-functional teams to integrate complex Debt Service modules (Freeway, Traffic, Police Inquiry) into the main application, utilizing the shared package library to maintain consistency and reduce integration bugs.",
-        "Worked within the frontend team to launch a Progressive Web App (PWA) aimed at iOS and Android users; this collective effort supported a rapid expansion of the user base, reaching 20,000+ users within the first quarter.",
-        "Assisted in the technical redesign of the Debt Certificate journey; by leveraging reusable UI components and refined business logic, the team achieved a 15% increase in conversion rates.",
-        "Participated in a major codebase overhaul aimed at improving the Developer Experience (DX). By moving shared logic into dedicated packages, the team reduced code duplication and simplified the onboarding process for new developers."
-        
+        "Established modular multi-package architecture that broke down the frontend into composable modules, streamlining development by allowing feature teams to work independently on Business Lines without blocking each other.",
+        "Contributed on migration from Nuxt.js 2 to Next.js 15, transitioning the majority of the legacy app to modern frameworks and laying groundwork for systematic refactoring, significantly improving project structure and developer onboarding.",
+        "Led migration of order creation, invoicing, and payment services to the Gateway page (debt list), consolidating critical transactional flows into a unified interface for improved user experience and streamlined debt management.",
+        "Assisted in the technical redesign of the Debt Certificate journey; by leveraging reusable UI components and refined business logic, the team achieved a 15% increase in conversion rates."
       ],
       technologies: ['JavaScript', 'TypeScript', 'Nuxt.js', 'Vue.js', 'GraphQL' ,'React', 'Next.js', 'Tailwind CSS'],
     },
