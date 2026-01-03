@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 interface ExperienceItem {
   title: string;
   company: string;
+  companyUrl: string;
   location: string;
   period: string;
   description: string[];
@@ -48,6 +49,7 @@ const Experience = () => {
     {
       title: 'Senior Frontend Engineer',
       company: 'iToll | آیتول',
+      companyUrl: 'https://pwa.itoll.com',
       location: 'Tehran, Iran',
       period: 'Nov 2023 — Present',
       description: [
@@ -63,7 +65,8 @@ const Experience = () => {
     },
     {
       title: 'Frontend Developer',
-      company: 'Zeenaji | زیناجی',
+      company: 'Rabeeen | رابین',
+      companyUrl: 'https://rabeeen.com/',
       location: 'Tehran, Iran',
       period: 'April 2023 — Oct 2023',
       description: [
@@ -75,6 +78,7 @@ const Experience = () => {
     {
       title: 'Frontend Developer',
       company: 'Limoome | لیمومی',
+      companyUrl: 'https://limoome.com',
       location: 'Tehran, Iran',
       period: 'Sep 2021 — Oct 2023',
       description: [
@@ -89,8 +93,9 @@ const Experience = () => {
     {
       title: 'Frontend Developer',
       company: 'Baloot Saving | بلوط',
+      companyUrl: 'https://balootsaving.ir',
       location: 'Tehran, Iran',
-      period: 'Sep 2021 — Oct 2023',
+      period: 'Oct 2020 — Sep 2021',
       description: [
         "Implemented progressive web app capabilities into iOS MVP using React, integrating Web Core API (Push Notification, Offline Caching, ...) and service workers to provide native-like capabilities to 1,500+ mobile users.",
         "Developed interactive data visualizations using D3.js and Nivo.js to represent user balance metrics.",
@@ -116,7 +121,9 @@ const Experience = () => {
             {experiences.map((exp, index) => (
               <div 
                 key={index} 
-                ref={(el) => (itemRefs.current[index] = el)}
+                ref={(el) => {
+                  itemRefs.current[index] = el;
+                }}
                 className="relative pl-12 md:pl-20"
               >
                 {/* Timeline dot */}
@@ -132,7 +139,18 @@ const Experience = () => {
                 <div>
                   <div className="mb-2">
                     <h3 className="text-xl font-semibold text-navy-dark dark:text-white">
-                      {exp.title} <span className="text-green dark:text-green-dark">@ {exp.company}</span>
+                      {exp.title}{' '}
+                      <span className="text-green dark:text-green-dark">
+                        @{' '}
+                        <a
+                          href={exp.companyUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:underline transition-colors"
+                        >
+                          {exp.company}
+                        </a>
+                      </span>
                     </h3>
                     <p className="text-sm text-slate-dark dark:text-slate-light">{exp.period}</p>
                   </div>
