@@ -47,39 +47,56 @@ const Experience = () => {
   const experiences: ExperienceItem[] = [
     {
       title: 'Senior Frontend Engineer',
-      company: 'Company Name',
-      location: 'Remote',
-      period: '2024 — Present',
+      company: 'iToll | آیتول',
+      location: 'Tehran, Iran',
+      period: 'Nov 2023 — Present',
       description: [
-        'Build and maintain critical components used to construct the frontend across the whole product.',
-        'Work closely with cross-functional teams to implement and advocate for best practices.',
-        'Lead initiatives to improve code quality and developer experience.',
+        'Collaborated on a multi-package architecture, decoupling the frontend into version-controlled packages for Core, Helpers, and UI Components. This enabled feature teams to focus on Business Lines (BL), significantly increasing team velocity and ensuring shared logic was rigorously tested in isolation',
+        "Contributed to the team's strategic migration from Nuxt.js 2 to Next.js 14, focusing on porting core infrastructure and payment modules to the new App Router architecture to improve performance and SEO.",
+        "Partnered with cross-functional teams to integrate complex Debt Service modules (Freeway, Traffic, Police Inquiry) into the main application, utilizing the shared package library to maintain consistency and reduce integration bugs.",
+        "Worked within the frontend team to launch a Progressive Web App (PWA) aimed at iOS and Android users; this collective effort supported a rapid expansion of the user base, reaching 20,000+ users within the first quarter.",
+        "Assisted in the technical redesign of the Debt Certificate journey; by leveraging reusable UI components and refined business logic, the team achieved a 15% increase in conversion rates.",
+        "Participated in a major codebase overhaul aimed at improving the Developer Experience (DX). By moving shared logic into dedicated packages, the team reduced code duplication and simplified the onboarding process for new developers."
+        
       ],
-      technologies: ['JavaScript', 'TypeScript', 'React', 'Next.js', 'Tailwind CSS'],
+      technologies: ['JavaScript', 'TypeScript', 'Nuxt.js', 'Vue.js', 'GraphQL' ,'React', 'Next.js', 'Tailwind CSS'],
     },
     {
-      title: 'Frontend Engineer',
-      company: 'Previous Company',
-      location: 'City, Country',
-      period: '2022 — 2024',
+      title: 'Frontend Developer',
+      company: 'Zeenaji | زیناجی',
+      location: 'Tehran, Iran',
+      period: 'April 2023 — Oct 2023',
       description: [
-        'Developed and shipped high-quality websites and web applications for various clients.',
-        'Collaborated with designers and product managers to implement pixel-perfect designs.',
-        'Optimized applications for maximum speed and scalability.',
+        "Designed and developed an intuitive, user-friendly Vue.js marketplace to streamline the selling experience for suppliers and buyers.",
+        "Developed an administrative dashboard using React-Admin to manage seller and customer accounts and track status."
       ],
-      technologies: ['React', 'TypeScript', 'Node.js', 'GraphQL', 'Styled Components'],
+      technologies: ['Nuxt.js', 'Vue.js', 'Nestjs'],
     },
     {
-      title: 'Junior Developer',
-      company: 'Startup Company',
-      location: 'City, Country',
-      period: '2020 — 2022',
+      title: 'Frontend Developer',
+      company: 'Limoome | لیمومی',
+      location: 'Tehran, Iran',
+      period: 'Sep 2021 — Oct 2023',
       description: [
-        'Built responsive web applications using modern JavaScript frameworks.',
-        'Participated in code reviews and contributed to team knowledge sharing.',
-        'Maintained and improved existing codebases.',
+        "As a member of Limoome tech team, we provide solutions and ensure people to have a more robust and straight-forward experience to grow healthier habbits for a more quality life style through our applications.",
+        "Led migration of legacy JSP codebase to Vue and React frameworks, converting more than 60% lines of code to modern front-end stack.",
+        "Established modular monorepo architecture using Yarn workspaces and layered service boundaries, consolidating UI, Network, and Core services into unified dev environment.",
+        "Partnered with UX designers to build out custom UI component library on top of TailwindCSS and Vant, implementing 30+ reusable UI components to standardize product design system.",
+        "Developed multiple admin panels using React-Admin framework, increasing business agility and system maintainability.",
       ],
-      technologies: ['JavaScript', 'React', 'CSS', 'HTML', 'Git'],
+      technologies: ['Nuxt.js', 'Vue.js', 'Nestjs'],
+    },
+    {
+      title: 'Frontend Developer',
+      company: 'Baloot Saving | بلوط',
+      location: 'Tehran, Iran',
+      period: 'Sep 2021 — Oct 2023',
+      description: [
+        "Implemented progressive web app capabilities into iOS MVP using React, integrating Web Core API (Push Notification, Offline Caching, ...) and service workers to provide native-like capabilities to 1,500+ mobile users.",
+        "Developed interactive data visualizations using D3.js and Nivo.js to represent user balance metrics.",
+        "Built and optimized company website using Next.js and React, leveraging SSG and ISR to improve Core Web Vitals metrics by 50%."
+      ],
+      technologies: ['Next.js', 'React', 'PWA', 'D3.js', 'Nivo.js'],
     },
   ];
 
