@@ -60,19 +60,20 @@ const Navbar = () => {
             </Link>
           </div>
 
+          <div className="hidden md:flex items-center space-x-8">
+            {navItems.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
+                className="text-sm text-slate-light hover:text-green-dark transition-colors relative z-10 px-3 py-1.5 rounded-xl hover:bg-white/5"
+              >
+                {item.name}
+              </a>
+            ))}
+          </div>
+
           <div className="flex items-center space-x-4">
-            <div className="hidden md:flex items-center space-x-6">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={(e) => handleNavClick(e, item.href)}
-                  className="text-sm text-slate-light hover:text-green-dark transition-colors relative z-10 px-3 py-1.5 rounded-xl hover:bg-white/5"
-                >
-                  {item.name}
-                </a>
-              ))}
-            </div>
             <div className="hidden sm:flex items-center space-x-3">
               {socialLinks.map((social) => {
                 const Icon = social.icon;

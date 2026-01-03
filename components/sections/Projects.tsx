@@ -1,4 +1,7 @@
-'use client'; 
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
+
 interface Project {
   title: string;
   description: string;
@@ -7,9 +10,6 @@ interface Project {
   live?: string;
   featured?: boolean;
 }
-
-
-import { useEffect, useRef, useState } from 'react';
 
 const Projects = () => {
   const [visibleProjects, setVisibleProjects] = useState<Set<number>>(new Set());
