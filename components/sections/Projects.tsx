@@ -123,14 +123,24 @@ const Projects = () => {
                 </div>
               </div>
               <div className="flex flex-wrap gap-2 mb-4">
-                {project.technologies.map((tech, i) => (
-                  <span
-                    key={i}
-                    className="text-xs text-slate-dark dark:text-slate-light font-mono"
-                  >
-                    {tech}
-                  </span>
-                ))}
+                {project.technologies.map((tech, i) => {
+                  const techColors = ['#64ffda', '#5b8def', '#a78bfa', '#f472b6', '#fb923c', '#22d3ee', '#fbbf24'];
+                  const color = techColors[i % techColors.length];
+                  return (
+                    <span
+                      key={i}
+                      className="text-xs px-3 py-1.5 rounded-full font-mono transition-all duration-300 hover:scale-105"
+                      style={{
+                        color: color,
+                        backgroundColor: `${color}15`,
+                        border: `1px solid ${color}40`,
+                        boxShadow: `0 0 8px ${color}20, inset 0 1px 0 ${color}30`
+                      }}
+                    >
+                      {tech}
+                    </span>
+                  );
+                })}
               </div>
               <div className="flex gap-4">
                 {project.github && (
