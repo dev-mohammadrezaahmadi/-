@@ -235,10 +235,17 @@
   .siri-border-effect {
     position: relative;
     overflow: visible !important;
+    z-index: 1;
+  }
+
+  .siri-border-effect > * {
+    position: relative;
+    z-index: 1;
   }
 
   .siri-border-effect:hover {
     border: 2px solid rgba(100, 255, 218, 0.6) !important;
+    color: var(--color-green-dark) !important;
     animation: siriGlow 3s ease-in-out infinite, siriBorder 3s ease-in-out infinite !important;
     background: linear-gradient(90deg, 
       rgba(100, 255, 218, 0.15), 
@@ -270,8 +277,14 @@
       rgba(100, 255, 218, 1)
     );
     background-size: 300% 100%;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
+    -webkit-mask-composite: exclude;
+    mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
     mask-composite: exclude;
     opacity: 0;
     transition: opacity 0.3s ease;

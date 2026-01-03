@@ -16,7 +16,7 @@ const Hero = () => {
         </p>
         <a
           href="#projects"
-          className="btn siri-border-effect inline-block animate-slide-up"
+          className="btn inline-block animate-slide-up"
           style={{ animationDelay: '0.6s' }}
         >
           Explore My Work!
