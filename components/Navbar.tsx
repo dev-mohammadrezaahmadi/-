@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
+import { useTheme } from '../contexts/ThemeContext';
 import Switcher from './Switcher';
 import { 
   FaGithub, 
@@ -14,11 +15,8 @@ import {
 
 const Navbar = () => {
   const pathname = usePathname();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
 
   const navItems = [
     { name: 'About', href: '#about' },
@@ -44,13 +42,32 @@ const Navbar = () => {
     }
   };
 
+  const navBgColor = isDark ? 'rgba(10, 25, 47, 0.8)' : 'rgba(255, 255, 255, 0.8)';
+  const borderColor = isDark ? 'rgba(204, 214, 246, 0.1)' : 'rgba(73, 86, 112, 0.1)';
+  const textColor = isDark ? '#ccd6f6' : '#495670';
+  const hoverColor = isDark ? '#52d4b8' : '#64ffda';
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-navy-dark/80 backdrop-blur-sm border-b border-slate-dark/10 dark:border-slate-light/10">
+    <nav 
+      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm border-b transition-colors duration-200"
+      style={{ 
+        backgroundColor: navBgColor,
+        borderColor: borderColor
+      }}
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo/Name */}
           <div className="flex items-center">
-            <Link href="/" className="text-xl font-bold text-navy-dark dark:text-white hover:text-green dark:hover:text-green-dark transition-colors">
+            <Link 
+              href="/" 
+              className="text-xl font-bold transition-colors duration-200"
+              style={{ 
+                color: isDark ? 'white' : '#0a192f'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.color = hoverColor}
+              onMouseLeave={(e) => e.currentTarget.style.color = isDark ? 'white' : '#0a192f'}
+            >
               Your Name
             </Link>
           </div>
@@ -62,7 +79,10 @@ const Navbar = () => {
                 key={item.name}
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
-                className="text-sm text-slate-dark dark:text-slate-light hover:text-green dark:hover:text-green-dark transition-colors"
+                className="text-sm transition-colors duration-200"
+                style={{ color: textColor }}
+                onMouseEnter={(e) => e.currentTarget.style.color = hoverColor}
+                onMouseLeave={(e) => e.currentTarget.style.color = textColor}
               >
                 {item.name}
               </a>
@@ -80,7 +100,10 @@ const Navbar = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-slate-dark dark:text-slate-light hover:text-green dark:hover:text-green-dark transition-colors"
+                    className="transition-colors duration-200"
+                    style={{ color: textColor }}
+                    onMouseEnter={(e) => e.currentTarget.style.color = hoverColor}
+                    onMouseLeave={(e) => e.currentTarget.style.color = textColor}
                     aria-label={social.name}
                   >
                     <Icon className="w-5 h-5" />
@@ -88,7 +111,7 @@ const Navbar = () => {
                 );
               })}
             </div>
-            {mounted && <Switcher />}
+            <Switcher />
           </div>
         </div>
       </div>
@@ -97,4 +120,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
