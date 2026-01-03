@@ -343,3 +343,13 @@
 .dark\:hover\:text-green-dark:hover { color: var(--color-green-dark) !important; }
 .dark\:hover\:border-green:hover { border-color: var(--color-green) !important; }
 .dark\:hover\:border-green-dark:hover { border-color: var(--color-green-dark) !important; }
+
+/* Hide scrollbar for carousel */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

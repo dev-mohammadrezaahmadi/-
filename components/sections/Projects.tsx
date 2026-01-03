@@ -15,36 +15,10 @@ interface Project {
 
 const Projects = () => {
   const [visibleProjects, setVisibleProjects] = useState<Set<number>>(new Set());
+  const [currentIndex, setCurrentIndex] = useState(0);
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const observers: IntersectionObserver[] = [];
-
-    projectRefs.current.forEach((ref, index) => {
-      if (!ref) return;
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setVisibleProjects((prev) => new Set(prev).add(index));
-            }
-          });
-        },
-        {
-          threshold: 0.2,
-          rootMargin: '0px 0px -50px 0px',
-        }
-      );
-
-      observer.observe(ref);
-      observers.push(observer);
-    });
-
-    return () => {
-      observers.forEach((observer) => observer.disconnect());
-    };
-  }, []);
   const projects: Project[] = [
     {
       title: 'Movie DB Finder',
@@ -74,33 +48,141 @@ const Projects = () => {
     }
   ];
 
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+
+    projectRefs.current.forEach((ref, index) => {
+      if (!ref) return;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setVisibleProjects((prev) => new Set(prev).add(index));
+            }
+          });
+        },
+        {
+          threshold: 0.2,
+          rootMargin: '0px 0px -50px 0px',
+        }
+      );
+
+      observer.observe(ref);
+      observers.push(observer);
+    });
+
+    return () => {
+      observers.forEach((observer) => observer.disconnect());
+    };
+  }, []);
+
+  const scrollToIndex = (index: number) => {
+    if (carouselRef.current && projectRefs.current[index]) {
+      const cardElement = projectRefs.current[index];
+      if (cardElement) {
+        cardElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'center',
+        });
+        setCurrentIndex(index);
+      }
+    }
+  };
+
+  const handlePrev = () => {
+    const newIndex = currentIndex > 0 ? currentIndex - 1 : projects.length - 1;
+    scrollToIndex(newIndex);
+  };
+
+  const handleNext = () => {
+    const newIndex = currentIndex < projects.length - 1 ? currentIndex + 1 : 0;
+    scrollToIndex(newIndex);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (carouselRef.current) {
+        const scrollLeft = carouselRef.current.scrollLeft;
+        const containerWidth = carouselRef.current.offsetWidth;
+        const cardWidth = containerWidth; // Full width on mobile, half on desktop
+        const isMobile = window.innerWidth < 768;
+        const effectiveCardWidth = isMobile ? containerWidth : containerWidth / 2;
+        const newIndex = Math.round(scrollLeft / effectiveCardWidth);
+        if (newIndex >= 0 && newIndex < projects.length) {
+          setCurrentIndex(newIndex);
+        }
+      }
+    };
+
+    const carousel = carouselRef.current;
+    if (carousel) {
+      carousel.addEventListener('scroll', handleScroll);
+      return () => carousel.removeEventListener('scroll', handleScroll);
+    }
+  }, [projects.length]);
+
   return (
     <section id="projects" className="section-container">
       <h2 className="section-title animate-slide-up">
         <span className="text-green dark:text-green-dark text-xl font-mono mr-2">03.</span>
         Some Things I've Built
       </h2>
-      <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-        {projects.map((project, index) => {
-          const cardUrl = project.live || project.github || '#';
-          return (
-            <a
-              key={index}
-              ref={(el) => {
-                projectRefs.current[index] = el;
-              }}
-              href={cardUrl}
-              target={cardUrl !== '#' ? '_blank' : undefined}
-              rel={cardUrl !== '#' ? 'noopener noreferrer' : undefined}
-              className={`group relative liquid-glass-card rounded-xl overflow-hidden transition-all duration-700 hover:scale-[1.02] block cursor-pointer ${
-                visibleProjects.has(index)
-                  ? 'opacity-100 translate-y-0'
-                  : 'opacity-0 translate-y-8'
-              }`}
-              style={{ transitionDelay: `${index * 0.1}s` }}
-            >
+      <div className="mt-12 relative">
+        {/* Navigation Buttons */}
+        <button
+          onClick={handlePrev}
+          className="absolute left-0 md:-left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full liquid-glass-card flex items-center justify-center hover:scale-110 transition-all duration-300 text-slate-light hover:text-green dark:hover:text-green-dark shadow-lg"
+          aria-label="Previous project"
+        >
+          <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button
+          onClick={handleNext}
+          className="absolute right-0 md:-right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full liquid-glass-card flex items-center justify-center hover:scale-110 transition-all duration-300 text-slate-light hover:text-green dark:hover:text-green-dark shadow-lg"
+          aria-label="Next project"
+        >
+          <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+
+        {/* Carousel Container */}
+        <div
+          ref={carouselRef}
+          className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-6 pb-4 items-stretch"
+          style={{
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+          }}
+        >
+          {projects.map((project, index) => {
+            const cardUrl = project.live || project.github || '#';
+            return (
+              <div
+                key={index}
+                ref={(el) => {
+                  projectRefs.current[index] = el;
+                }}
+                className="shrink-0 w-full md:w-[calc(50%-12px)] snap-center"
+              >
+                <a
+                  href={cardUrl}
+                  target={cardUrl !== '#' ? '_blank' : undefined}
+                  rel={cardUrl !== '#' ? 'noopener noreferrer' : undefined}
+                  title={`View ${project.title} project`}
+                  className={`group relative liquid-glass-card rounded-xl overflow-hidden transition-all duration-700 hover:scale-[1.02] flex flex-col cursor-pointer h-full ${
+                    visibleProjects.has(index)
+                      ? 'opacity-100 translate-y-0'
+                      : 'opacity-0 translate-y-8'
+                  }`}
+                  style={{ transitionDelay: `${index * 0.1}s` }}
+                >
             {project.image && (
-              <div className="relative w-full h-48 overflow-hidden">
+              <div className="relative w-full h-48 overflow-hidden shrink-0">
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -111,13 +193,13 @@ const Projects = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent"></div>
               </div>
             )}
-            <div className="p-6">
+            <div className="p-6 flex flex-col grow">
               <div className="flex justify-between items-start mb-4">
-                <div>
+                <div className="w-full">
                   <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-green dark:group-hover:text-green-dark transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-slate-light text-sm mb-4">
+                  <p className="text-slate-light text-sm mb-4 line-clamp-3 min-h-18">
                     {project.description}
                   </p>
                 </div>
@@ -129,7 +211,7 @@ const Projects = () => {
                   return (
                     <span
                       key={i}
-                      className="text-xs px-3 py-1.5 rounded-full font-mono transition-all duration-300 hover:scale-105"
+                      className="text-xs px-3 py-1.5 rounded-full font-mono transition-all duration-300 hover:scale-105 whitespace-nowrap"
                       style={{
                         color: color,
                         backgroundColor: `${color}15`,
@@ -142,7 +224,7 @@ const Projects = () => {
                   );
                 })}
               </div>
-              <div className="flex gap-4">
+              <div className="flex gap-4 mt-auto">
                 {project.github && (
                   <a
                     href={project.github}
@@ -174,8 +256,26 @@ const Projects = () => {
               </div>
             </div>
           </a>
+          </div>
           );
         })}
+        </div>
+
+        {/* Dot Indicators */}
+        <div className="flex justify-center items-center gap-2 mt-6">
+          {projects.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => scrollToIndex(index)}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                currentIndex === index
+                  ? 'bg-green dark:bg-green-dark w-8'
+                  : 'bg-slate-light/30 hover:bg-slate-light/50'
+              }`}
+              aria-label={`Go to project ${index + 1}`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
